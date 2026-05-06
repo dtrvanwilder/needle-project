@@ -17,3 +17,6 @@
 - Hajimemashou (Let's start)
 - Naoshimashita (I fixed it)
 - Mata ashita (See you tomorrow)
+## Day 3 Progress:
+- Implemented basic movement (Ugoki) in GDScript
+- Committed first functional game logic to main branch.
