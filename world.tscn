@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bgi7avfxwgaap"]
+
+[ext_resource type="Script" uid="uid://chxxjk2l0nlb5" path="res://player.gd" id="1_fj7yv"]
+[ext_resource type="Texture2D" uid="uid://c6s6h7h2lh8jc" path="res://icon.svg" id="2_tlwt5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
+size = Vector2(126, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
+size = Vector2(80, 77)
+
+[node name="World" type="Node2D" unique_id=1571452066]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=216144225]
+script = ExtResource("1_fj7yv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1671463374]
+position = Vector2(-53, 73)
+shape = SubResource("RectangleShape2D_aqk2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/CollisionShape2D" unique_id=823420898]
+texture = ExtResource("2_tlwt5")
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=2066378095]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1315389622]
+position = Vector2(620, 214.5)
+shape = SubResource("RectangleShape2D_fj7yv")
+
+[node name="ColorRect" type="ColorRect" parent="Wall/CollisionShape2D" unique_id=2061233524]
+offset_left = -39.40625
+offset_top = -36.0
+offset_right = 39.0
+offset_bottom = 37.5
+color = Color(0.7602371, 0, 0.0076991874, 1)
