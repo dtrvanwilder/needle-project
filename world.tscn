@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://bgi7avfxwgaap"]
 
+[ext_resource type="Script" uid="uid://bci77dja166q" path="res://world.gd" id="1_036b0"]
 [ext_resource type="Script" uid="uid://chxxjk2l0nlb5" path="res://player.gd" id="1_fj7yv"]
 [ext_resource type="Texture2D" uid="uid://c6s6h7h2lh8jc" path="res://icon.svg" id="2_tlwt5"]
+[ext_resource type="Script" uid="uid://x32hcqrmyxmp" path="res://wall.gd" id="3_aqk2v"]
+[ext_resource type="Script" uid="uid://b74t537206gm3" path="res://food.gd" id="3_tlwt5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
 size = Vector2(126, 126)
@@ -9,19 +12,25 @@ size = Vector2(126, 126)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
 size = Vector2(80, 77)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_036b0"]
+size = Vector2(19, 18)
+
 [node name="World" type="Node2D" unique_id=1571452066]
+scale = Vector2(0.99483097, 1)
+script = ExtResource("1_036b0")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=216144225]
 script = ExtResource("1_fj7yv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1671463374]
-position = Vector2(-53, 73)
+position = Vector2(69, 410)
 shape = SubResource("RectangleShape2D_aqk2v")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/CollisionShape2D" unique_id=823420898]
 texture = ExtResource("2_tlwt5")
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=2066378095]
+script = ExtResource("3_aqk2v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1315389622]
 position = Vector2(620, 214.5)
@@ -33,3 +42,41 @@ offset_top = -36.0
 offset_right = 39.0
 offset_bottom = 37.5
 color = Color(0.7602371, 0, 0.0076991874, 1)
+
+[node name="Food" type="Area2D" parent="." unique_id=1609778237]
+script = ExtResource("3_tlwt5")
+
+[node name="ColorRect" type="ColorRect" parent="Food" unique_id=123046290]
+offset_left = 479.0
+offset_top = 234.0
+offset_right = 499.0
+offset_bottom = 254.0
+color = Color(0, 0.9071993, 0.083283596, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Food" unique_id=2105100270]
+position = Vector2(489, 244)
+shape = SubResource("RectangleShape2D_036b0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1853092874]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=499518087]
+offset_left = 32.0
+offset_top = 1.0
+offset_right = 121.0
+offset_bottom = 29.0
+text = "Score: 0"
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=1404985449]
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 109.0
+offset_bottom = 51.0
+text = "30"
+
+[node name="Timer" type="Timer" parent="." unique_id=1758895761]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Food" to="Food" method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
