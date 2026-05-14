@@ -23,24 +23,24 @@ script = ExtResource("1_036b0")
 script = ExtResource("1_fj7yv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1671463374]
-position = Vector2(69, 410)
 shape = SubResource("RectangleShape2D_aqk2v")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player/CollisionShape2D" unique_id=823420898]
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=823420898]
+position = Vector2(0.16627455, -5.00679e-06)
+scale = Vector2(1.0025979, 1.0156249)
 texture = ExtResource("2_tlwt5")
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=2066378095]
 script = ExtResource("3_aqk2v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1315389622]
-position = Vector2(620, 214.5)
 shape = SubResource("RectangleShape2D_fj7yv")
 
-[node name="ColorRect" type="ColorRect" parent="Wall/CollisionShape2D" unique_id=2061233524]
-offset_left = -39.40625
-offset_top = -36.0
-offset_right = 39.0
-offset_bottom = 37.5
+[node name="ColorRect" type="ColorRect" parent="Wall" unique_id=2061233524]
+offset_left = -37.192245
+offset_top = -36.999996
+offset_right = 41.214005
+offset_bottom = 36.500004
 color = Color(0.7602371, 0, 0.0076991874, 1)
 
 [node name="Food" type="Area2D" parent="." unique_id=1609778237]
