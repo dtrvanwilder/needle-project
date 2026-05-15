@@ -1,1 +1,25 @@
+# ==========================================
+# Godot 4 Gitignore Template
+# ==========================================
+
+# Godot-specific local files (never commit these)
 .godot/
+.import/
+
+# Text editor / IDE local settings
+.vsc/
+.vscode/
+.idea/
+
+# Exported binaries (keep builds out of your source history)
+*.exe
+*.apk
+*.aab
+*.pck
+*.zip
+*.ios
+*.ipck
+
+# System files
+.DS_Store
+Thumbs.db

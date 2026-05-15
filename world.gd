@@ -22,12 +22,19 @@ func trigger_game_over():
 	is_game_over = true
 	$Timer.stop() 
 	
-	# Freeze the Player and Food processing loops instantly
-	$Player.process_mode = PROCESS_MODE_DISABLED
-	$Food.process_mode = PROCESS_MODE_DISABLED
+	# Establish a baseline default score buffer
+	var final_score = 0
 	
-	# Fetch the final score from your Food node
-	var final_score = $Food.score
+	# Freeze the Player processing loop safely
+	if has_node("Player") and $Player != null:
+		$Player.process_mode = PROCESS_MODE_DISABLED
+		
+	# Freeze the Enemy processing loop safely and extract the score tracking data
+	if has_node("Enemy") and $Enemy != null:
+		$Enemy.process_mode = PROCESS_MODE_DISABLED
+		final_score = $Enemy.score
+	else:
+		print("Warning: Enemy node was null or missing during game over execution!")
 	
 	# Build the dynamic high-fidelity display text string
 	game_over_label = Label.new()
@@ -41,7 +48,14 @@ func trigger_game_over():
 	$CanvasLayer.add_child(game_over_label)
 
 
+
 func restart_game():
 	is_game_over = false
-	# Reload the current active scene grid from scratch
+	
+	# Explicitly restore process modes using the updated node names
+	if has_node("Player") and $Player != null:
+		$Player.process_mode = PROCESS_MODE_INHERIT
+	if has_node("Enemy") and $Enemy != null:
+		$Enemy.process_mode = PROCESS_MODE_INHERIT
+		
 	get_tree().reload_current_scene()

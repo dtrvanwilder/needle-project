@@ -2,60 +2,109 @@
 
 [ext_resource type="Script" uid="uid://bci77dja166q" path="res://world.gd" id="1_036b0"]
 [ext_resource type="Script" uid="uid://chxxjk2l0nlb5" path="res://player.gd" id="1_fj7yv"]
-[ext_resource type="Texture2D" uid="uid://c6s6h7h2lh8jc" path="res://icon.svg" id="2_tlwt5"]
+[ext_resource type="Texture2D" uid="uid://78js6u0ayfle" path="res://Grass_theme.png" id="2_gbfbk"]
 [ext_resource type="Script" uid="uid://x32hcqrmyxmp" path="res://wall.gd" id="3_aqk2v"]
-[ext_resource type="Script" uid="uid://b74t537206gm3" path="res://food.gd" id="3_tlwt5"]
+[ext_resource type="Texture2D" uid="uid://dbfg4nfdqrdsr" path="res://Inosuke.png" id="3_dwbse"]
+[ext_resource type="Script" uid="uid://b74t537206gm3" path="res://Enemy.gd" id="3_tlwt5"]
+[ext_resource type="Texture2D" uid="uid://bdmvw4x2hrmsy" path="res://Blade.png" id="4_pkg7o"]
+[ext_resource type="Texture2D" uid="uid://bj803iblaiu6d" path="res://Rat.png" id="6_pkg7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
 size = Vector2(126, 126)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gbfbk"]
+a = Vector2(-91.56268, -58)
+b = Vector2(-35.272, -17)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pkg7o"]
+a = Vector2(83.43121, -49)
+b = Vector2(35.272, -17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
 size = Vector2(80, 77)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_036b0"]
-size = Vector2(19, 18)
+size = Vector2(60.311806, 46.000065)
 
 [node name="World" type="Node2D" unique_id=1571452066]
 scale = Vector2(0.99483097, 1)
 script = ExtResource("1_036b0")
 
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1154612393]
+layer = -100
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer" unique_id=1491273976]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gbfbk")
+expand_mode = 1
+stretch_mode = 6
+
 [node name="Player" type="CharacterBody2D" parent="." unique_id=216144225]
+position = Vector2(960, 540)
 script = ExtResource("1_fj7yv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1671463374]
+scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_aqk2v")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=823420898]
-position = Vector2(0.16627455, -5.00679e-06)
-scale = Vector2(1.0025979, 1.0156249)
-texture = ExtResource("2_tlwt5")
+scale = Vector2(0.14037405, 0.15429688)
+texture = ExtResource("3_dwbse")
+
+[node name="SlashArea" type="Area2D" parent="Player" unique_id=2035642943]
+position = Vector2(-10, 45)
+monitoring = false
+
+[node name="SlashCollision" type="CollisionShape2D" parent="Player/SlashArea" unique_id=681817808]
+shape = SubResource("SegmentShape2D_gbfbk")
+
+[node name="SlashSprite" type="Sprite2D" parent="Player/SlashArea" unique_id=821485630]
+position = Vector2(-45, -30)
+scale = Vector2(0.15513875, 0.2336956)
+texture = ExtResource("4_pkg7o")
+
+[node name="SlashAreaRight" type="Area2D" parent="Player" unique_id=158237831]
+monitoring = false
+
+[node name="SlashCollision" type="CollisionShape2D" parent="Player/SlashAreaRight" unique_id=1184499363]
+position = Vector2(10.014043, 51.999996)
+shape = SubResource("SegmentShape2D_pkg7o")
+
+[node name="SlashSprite" type="Sprite2D" parent="Player/SlashAreaRight" unique_id=305677082]
+position = Vector2(45, 30)
+scale = Vector2(0.15513875, 0.2336956)
+texture = ExtResource("4_pkg7o")
+flip_h = true
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=2066378095]
+position = Vector2(300, 200)
 script = ExtResource("3_aqk2v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1315389622]
 shape = SubResource("RectangleShape2D_fj7yv")
 
 [node name="ColorRect" type="ColorRect" parent="Wall" unique_id=2061233524]
-offset_left = -37.192245
-offset_top = -36.999996
-offset_right = 41.214005
-offset_bottom = 36.500004
+offset_left = -39.0
+offset_top = -37.0
+offset_right = 39.406
+offset_bottom = 36.5
 color = Color(0.7602371, 0, 0.0076991874, 1)
 
-[node name="Food" type="Area2D" parent="." unique_id=1609778237]
+[node name="Enemy" type="Area2D" parent="." unique_id=1609778237]
+position = Vector2(1400, 400)
 script = ExtResource("3_tlwt5")
 
-[node name="ColorRect" type="ColorRect" parent="Food" unique_id=123046290]
-offset_left = 479.0
-offset_top = 234.0
-offset_right = 499.0
-offset_bottom = 254.0
-color = Color(0, 0.9071993, 0.083283596, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Food" unique_id=2105100270]
-position = Vector2(489, 244)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=2105100270]
+scale = Vector2(0.9999991, 0.9999991)
 shape = SubResource("RectangleShape2D_036b0")
+
+[node name="Rat" type="Sprite2D" parent="Enemy" unique_id=235893038]
+scale = Vector2(0.0991454, 0.075683534)
+texture = ExtResource("6_pkg7o")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1853092874]
 
@@ -78,5 +127,7 @@ wait_time = 30.0
 one_shot = true
 autostart = true
 
-[connection signal="body_entered" from="Food" to="Food" method="_on_body_entered"]
+[connection signal="area_entered" from="Player/SlashArea" to="Player" method="_on_slash_area_area_entered"]
+[connection signal="area_entered" from="Player/SlashAreaRight" to="Player" method="_on_slash_area_area_entered"]
+[connection signal="body_entered" from="Enemy" to="Enemy" method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
