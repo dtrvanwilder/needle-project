@@ -24,11 +24,6 @@ func _physics_process(_delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * speed
 	move_and_slide()
-	
-	# THE CLAMP PROTOCOL
-	var padding = 60
-	global_position.x = clamp(global_position.x, padding, screen_size.x - padding)
-	global_position.y = clamp(global_position.y, padding, screen_size.y - padding)
 
 	# MONITOR DUAL WEAPON COMBAT INPUTS
 	if Input.is_action_just_pressed("attack_left") and not is_attacking_left and not is_attacking_right:

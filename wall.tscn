@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b62ldbp8cml2j"]
+
+[ext_resource type="Script" uid="uid://x32hcqrmyxmp" path="res://wall.gd" id="1_y4f30"]
+[ext_resource type="Texture2D" uid="uid://yvvpgtxn1kot" path="res://brick_wall_a.png" id="2_y4f30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4f30"]
+size = Vector2(150, 89.25)
+
+[node name="Wall" type="StaticBody2D" unique_id=928680413]
+script = ExtResource("1_y4f30")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1907178321]
+shape = SubResource("RectangleShape2D_y4f30")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=383094110]
+position = Vector2(-1.4999996, 0.49999952)
+scale = Vector2(0.6363636, 1.126126)
+texture = ExtResource("2_y4f30")

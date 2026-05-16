@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cn42h2v17rry5"]
+
+[ext_resource type="Script" uid="uid://chxxjk2l0nlb5" path="res://player.gd" id="1_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://dbfg4nfdqrdsr" path="res://Inosuke.png" id="2_hqtel"]
+[ext_resource type="Texture2D" uid="uid://bdmvw4x2hrmsy" path="res://Blade.png" id="3_sweqy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs0m"]
+size = Vector2(126, 117.500015)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1jxqw"]
+a = Vector2(-91.56268, -58)
+b = Vector2(-35.272, -17)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_dw050"]
+a = Vector2(83.43121, -49)
+b = Vector2(35.272, -17)
+
+[node name="Player" type="CharacterBody2D" unique_id=1114394199]
+script = ExtResource("1_i3pqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=596917493]
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_2hs0m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=609079202]
+scale = Vector2(0.14037405, 0.15429688)
+texture = ExtResource("2_hqtel")
+
+[node name="SlashArea" type="Area2D" parent="." unique_id=1220567618]
+position = Vector2(-15, 45)
+monitoring = false
+
+[node name="SlashCollision" type="CollisionShape2D" parent="SlashArea" unique_id=1180851446]
+shape = SubResource("SegmentShape2D_1jxqw")
+
+[node name="SlashSprite" type="Sprite2D" parent="SlashArea" unique_id=1015594965]
+position = Vector2(-45, -30)
+scale = Vector2(0.15513875, 0.2336956)
+texture = ExtResource("3_sweqy")
+
+[node name="SlashAreaRight" type="Area2D" parent="." unique_id=918904544]
+position = Vector2(12, -10)
+monitoring = false
+
+[node name="SlashCollision" type="CollisionShape2D" parent="SlashAreaRight" unique_id=1185788881]
+position = Vector2(10.014043, 51.999996)
+shape = SubResource("SegmentShape2D_dw050")
+
+[node name="SlashSprite" type="Sprite2D" parent="SlashAreaRight" unique_id=2064386374]
+position = Vector2(45, 30)
+scale = Vector2(0.15513875, 0.2336956)
+texture = ExtResource("3_sweqy")
+flip_h = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1425429477]
+
+[connection signal="area_entered" from="SlashArea" to="." method="_on_slash_area_area_entered"]
+[connection signal="area_entered" from="SlashAreaRight" to="." method="_on_slash_area_right_area_entered"]
