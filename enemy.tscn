@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgh3pickydbtt"]
 
 [ext_resource type="Script" uid="uid://b74t537206gm3" path="res://Enemy.gd" id="1_4gyqm"]
-[ext_resource type="Texture2D" uid="uid://bj803iblaiu6d" path="res://Rat.png" id="2_qi2p4"]
+[ext_resource type="Texture2D" uid="uid://dicwwmmiykfmm" path="res://scavanger_rat_a.png" id="2_4gyqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
 size = Vector2(60.311806, 46.000065)
@@ -15,4 +15,4 @@ shape = SubResource("RectangleShape2D_iifgy")
 
 [node name="Rat" type="Sprite2D" parent="." unique_id=628499387]
 scale = Vector2(0.0991454, 0.075683534)
-texture = ExtResource("2_qi2p4")
+texture = ExtResource("2_4gyqm")
