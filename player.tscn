@@ -1,11 +1,18 @@
 [gd_scene format=3 uid="uid://cn42h2v17rry5"]
 
 [ext_resource type="Script" uid="uid://chxxjk2l0nlb5" path="res://player.gd" id="1_i3pqv"]
-[ext_resource type="Texture2D" uid="uid://dbfg4nfdqrdsr" path="res://Inosuke.png" id="2_hqtel"]
 [ext_resource type="Texture2D" uid="uid://bdmvw4x2hrmsy" path="res://Blade.png" id="3_sweqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs0m"]
 size = Vector2(126, 117.500015)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_onrkg"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1jxqw"]
 a = Vector2(-91.56268, -58)
@@ -22,9 +29,10 @@ script = ExtResource("1_i3pqv")
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_2hs0m")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=609079202]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1411668629]
 scale = Vector2(0.14037405, 0.15429688)
-texture = ExtResource("2_hqtel")
+sprite_frames = SubResource("SpriteFrames_onrkg")
+animation = &"idle"
 
 [node name="SlashArea" type="Area2D" parent="." unique_id=1220567618]
 position = Vector2(-15, 45)
