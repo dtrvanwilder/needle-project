@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dicwwmmiykfmm"
-path="res://.godot/imported/scavanger_rat_a.png-b5f88df96a83a85d935171d3157abf95.ctex"
+uid="uid://drmjhesfmwdmv"
+path="res://.godot/imported/NightBorne.png-2918d5f7d9c73cba8e1aa878340c945c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scavanger_rat_a.png"
-dest_files=["res://.godot/imported/scavanger_rat_a.png-b5f88df96a83a85d935171d3157abf95.ctex"]
+source_file="res://Assets/NightBorne.png"
+dest_files=["res://.godot/imported/NightBorne.png-2918d5f7d9c73cba8e1aa878340c945c.ctex"]
 
 [params]
 
