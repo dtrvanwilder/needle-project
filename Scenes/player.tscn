@@ -1,13 +1,21 @@
 [gd_scene format=3 uid="uid://dkhqxt1pwuf6x"]
 
+[ext_resource type="Script" uid="uid://b3xkn6eusc8ub" path="res://Entities/Player/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://drmjhesfmwdmv" path="res://Assets/NightBorne.png" id="1_v0iea"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
 
-[node name="Node2D" type="CharacterBody2D" unique_id=2071726115]
+[node name="Player" type="CharacterBody2D" unique_id=2071726115]
+script = ExtResource("1_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=53234340]
 texture = ExtResource("1_v0iea")
+hframes = 24
+vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=129180611]
 shape = SubResource("CircleShape2D_cvnsp")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1120340373]
+position = Vector2(-5.0000076, 1.9999924)
+scale = Vector2(0.7080435, 0.68808657)
