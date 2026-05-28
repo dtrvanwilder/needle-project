@@ -17,5 +17,7 @@ vframes = 4
 shape = SubResource("CircleShape2D_cvnsp")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1120340373]
-position = Vector2(-5.0000076, 1.9999924)
+light_mask = 2
+z_index = 5
+position = Vector2(4.7683716e-07, -4.7683716e-07)
 scale = Vector2(0.7080435, 0.68808657)
